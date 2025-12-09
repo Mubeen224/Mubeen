@@ -1,0 +1,34 @@
+using UnityEngine;
+using TMPro;
+using ArabicSupport;
+
+public class ArabicInputFixer : MonoBehaviour
+{
+    public TMP_InputField inputField;
+
+    void Start()
+    {
+        if (inputField == null)
+            inputField = GetComponent<TMP_InputField>();
+
+        // ‰ √ﬂœ √‰ TextMeshPro „« Ì⁄ﬂ” «·‰’ „—… À«‰Ì…
+        if (inputField.textComponent != null)
+            inputField.textComponent.isRightToLeftText = false;
+
+        // ﬂ· „« «·„” Œœ„ Ì€Ì¯— «·‰’° ‰Õœ¯À *«·⁄—÷ ›ﬁÿ*
+        inputField.onValueChanged.AddListener(OnValueChangedArabic);
+    }
+
+    private void OnDestroy()
+    {
+        inputField.onValueChanged.RemoveListener(OnValueChangedArabic);
+    }
+
+    void OnValueChangedArabic(string value)
+    {
+        // ‰⁄œ· ›ﬁÿ «·‰’ «·„⁄—Ê÷ ›Ì «·‹ textComponent
+        string fixedText = ArabicFixer.Fix(value, showTashkeel: false, useHinduNumbers: true);
+        inputField.textComponent.text = fixedText;
+        // ·« ‰·„” inputField.text √»œ« Â‰«
+    }
+}
