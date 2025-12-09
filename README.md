@@ -10,7 +10,7 @@ The application combines **gamification**, **speech practice**, and **AR/object 
 - **Parents**: create and manage accounts, add children, and track their progress.
 - **Children (4–7 years)**: play learning activities, earn rewards, and unlock characters and islands.
 
-> 🔹 Note: AI models and very large assets are **not included** in this GitHub repository due to size limits (see the section *Large Assets & Models* below).
+> 🔹 Note: AI models and very large assets are **not included** in this GitHub repository due to size limits.
 
 ---
 
